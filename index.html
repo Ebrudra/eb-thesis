@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctoral Thesis Proposal | Elmehdi Benhaddouch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0d2c4e; /* Deeper Professional Blue */
+            --secondary-color: #1a5dab; /* Brighter accent blue */
+            --text-color: #333;
+            --light-gray: #f7f8fa;
+            --border-color: #e0e0e0;
+            --background-color: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        /* --- Header & Navigation --- */
+        .header {
+            background-color: var(--background-color);
+            padding: 0 5%;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        /* --- Hero Section --- */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: var(--background-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- Main Content & Sections --- */
+        main {
+            padding: 40px 5%;
+        }
+
+        .content-section {
+            background-color: var(--background-color);
+            margin-bottom: 40px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .section-header {
+            padding: 20px 30px;
+            background-color: #fcfcfd;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-family: 'Lora', serif;
+        }
+
+        .section-header .toggle-icon {
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: transform 0.4s ease;
+            color: var(--secondary-color);
+        }
+        
+        .section-content {
+            padding: 0 30px; /* Padding now horizontal only */
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease-out, padding 0.6s ease-out;
+        }
+
+        .content-section.expanded .section-content {
+            padding: 30px;
+            max-height: 50000px; /* A large value */
+        }
+        
+        .content-section.expanded .toggle-icon {
+            transform: rotate(45deg);
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 8px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-family: 'Lora', serif;
+            font-weight: 600;
+        }
+        
+        h3:first-child {
+            margin-top: 0;
+        }
+        
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        b { color: var(--primary-color); }
+        
+        /* --- Bibliography Section Styling --- */
+        .bib-category h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 25px;
+            color: var(--primary-color);
+            border-left: 3px solid var(--primary-color);
+            padding-left: 10px;
+        }
+        .bib-item { padding: 15px; border: 1px solid #eee; border-radius: 6px; margin-bottom: 15px; background-color: #fdfdfd; }
+        .bib-item p { margin: 8px 0 0 0; font-style: italic; color: #555; font-size: 0.95rem; }
+        .bib-actions { margin-top: 12px; display: flex; gap: 15px; }
+
+        /* --- Source Documents & AI Tools Styling --- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .doc-card, .tool-card {
+            background-color: #fdfdfd;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .doc-card h4, .tool-card h4 {
+            margin: 0 0 10px 0;
+            color: var(--primary-color);
+        }
+        .doc-card p, .tool-card p {
+            margin: 0 0 15px 0;
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+
+        /* --- General Button Style --- */
+        .btn { text-decoration: none; padding: 8px 18px; border-radius: 5px; font-weight: 500; font-size: 0.9rem; border: 1px solid transparent; cursor: pointer; transition: all 0.3s ease; display: inline-block; text-align: center; }
+        .btn-primary { background-color: var(--secondary-color); color: white; }
+        .btn-primary:hover { background-color: var(--primary-color); }
+        .btn-secondary { background-color: transparent; color: var(--secondary-color); border-color: var(--secondary-color); }
+        .btn-secondary:hover { background-color: var(--secondary-color); color: white; }
+
+        /* --- Footer --- */
+        .footer { text-align: center; padding: 30px; background-color: var(--primary-color); color: white; font-size: 0.9rem; margin-top: 40px; }
+
+        /* --- Modal Styles --- */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); display: none; justify-content: center; align-items: center; z-index: 2000; }
+        .modal-overlay.active { display: flex; }
+        .modal-content { background: white; padding: 30px; border-radius: 8px; width: 90%; max-width: 700px; max-height: 80vh; overflow-y: auto; position: relative; }
+        .modal-close { position: absolute; top: 15px; right: 15px; font-size: 1.5rem; font-weight: bold; cursor: pointer; border: none; background: none; color: #888; }
+        .modal-close:hover { color: #333; }
+        .modal-title { margin-top: 0; color: var(--primary-color); font-family: 'Lora', serif; }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            .header { flex-direction: column; height: auto; padding: 15px 5%; }
+            .nav-links { margin-top: 15px; gap: 15px; flex-wrap: wrap; justify-content: center; }
+            html { scroll-padding-top: 120px; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .section-header h2 { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">Elmehdi Benhaddouch</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#overview" class="nav-link">Overview</a></li>
+                <li><a href="#methodology" class="nav-link">Methodology & Roadmap</a></li>
+                <li><a href="#documents" class="nav-link">Documents to Read</a></li>
+                <li><a href="#source-files" class="nav-link">Source Files</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>The Impact of Generative AI on the Digital Transformation of Innovation Ecosystems in Morocco</h1>
+        <p>A Doctoral Thesis Proposal</p>
+    </div>
+
+    <main>
+        <!-- Section 1: Overview -->
+        <section id="overview" class="content-section expanded">
+            <div class="section-header">
+                <h2>Overview</h2>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="section-content">
+                <h3>Problem Statement & Research Context</h3>
+                <p>Generative Artificial Intelligence (Gen AI) is a transformative technology driving profound changes across sectors by enhancing efficiency, automating tasks, and fostering innovation. Morocco is actively pursuing a national digital transformation, notably through its <b>"Maroc Digital 2030"</b> strategy, which aims to establish the country as a digital hub by developing talent, digitalizing public services, and supporting tech SMEs.</p>
+                <p>Innovation ecosystems in Morocco—comprising enterprises, universities, startups, and government bodies—are central to this strategy. However, despite the recognized potential of Gen AI, a significant knowledge gap exists regarding its specific influence on the digital transformation of these ecosystems within the unique Moroccan context. Key sectors such as <b>education, finance, and health</b> face distinct challenges and opportunities in integrating Gen AI. This research will address this gap by identifying the conditions necessary for successful integration and exploring how Gen AI can be effectively leveraged within these collaborative innovation processes.</p>
+
+                <h3>Purpose of the Study</h3>
+                <p>The primary purpose of this doctoral thesis is to provide a deep understanding of the role of Gen AI in digital transformation within Morocco. It aims to achieve the following:</p>
+                <ul>
+                    <li><b>Identify best practices</b> for effectively integrating AI into innovation processes across the education, finance, and health sectors.</li>
+                    <li><b>Develop a theoretical framework</b> to help organizations navigate their digital transformation efforts while fostering collaborative innovation.</li>
+                    <li><b>Provide practical, actionable recommendations</b> for stakeholders to maximize the benefits of Gen AI, considering Morocco's cultural and economic specificities.</li>
+                    <li><b>Contribute new analytical frameworks</b> to the academic literature on the interaction between Gen AI and innovation ecosystems.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 2: Methodology and Roadmap -->
+        <section id="methodology" class="content-section">
+            <div class="section-header">
+                <h2>Methodology and Roadmap</h2>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="section-content">
+                <h3>Research Question & Hypotheses</h3>
+                <p><b>Main Research Question:</b> How does Generative AI influence the digital transformation of innovation ecosystems in different sectors in Morocco?</p>
+                <p>To address this question, the research will test the following hypotheses:</p>
+                <ul>
+                    <li><b>Hypothesis 1:</b> The integration of Gen AI enhances collaboration and knowledge sharing within Moroccan innovation ecosystems.</li>
+                    <li><b>Hypothesis 2:</b> Gen AI increases the adaptability and resilience of these ecosystems in response to technological changes and evolving user needs.</li>
+                    <li><b>Hypothesis 3:</b> The impact of Gen AI varies significantly depending on the sectoral characteristics and specific objectives of the education, finance, and health sectors.</li>
+                    <li><b>Hypothesis 4:</b> The adoption of Gen AI within Moroccan innovation ecosystems contributes to the emergence of new business models and innovative services.</li>
+                </ul>
+                
+                <h3>Theoretical Framework</h3>
+                <p>This research is grounded in three core theories to provide a multi-faceted analytical lens:</p>
+                <ul>
+                    <li><b>Innovation Ecosystem Theory:</b> To understand how interactions between diverse actors (firms, institutions, users) create a collaborative environment and how Gen AI can amplify these synergies.</li>
+                    <li><b>Complex Systems Theory:</b> To view ecosystems as open, adaptive systems where Gen AI acts as a catalyst for adaptation and resilience in a complex, interconnected environment.</li>
+                    <li><b>Contingency Theory:</b> To argue that there is no one-size-fits-all approach. The effectiveness of Gen AI integration depends on specific contextual factors within each Moroccan sector (e.g., resources, skills, infrastructure).</li>
+                </ul>
+                
+                <h3>Epistemological Stance & Methodology</h3>
+                <p>The research adopts a hybrid epistemological stance combining <b>post-positivism</b> (knowledge is constructed through observation but is revisable) and <b>interpretivism</b> (understanding the subjective experiences of actors). This is suited to the rapidly evolving nature of AI.</p>
+                <p>A <b>mixed-methods approach</b> will be employed:</p>
+                <ul>
+                    <li><b>Qualitative Data:</b> In-depth interviews with stakeholders and comparative case studies of innovation ecosystems in the education, health, and finance sectors in Morocco.</li>
+                    <li><b>Quantitative Data:</b> Analysis of relevant data to measure the impact of Gen AI adoption on key performance indicators (e.g., efficiency, innovation output).</li>
+                    <li><b>Reasoning:</b> A hypothetico-deductive approach will be used to test the formulated hypotheses against empirical data.</li>
+                </ul>
+
+                <h3>Research Roadmap</h3>
+                <table style="width:100%; border-collapse: collapse; margin-top: 20px;">
+                    <tr style="background-color: var(--light-gray);">
+                        <th style="padding: 10px; border: 1px solid var(--border-color); text-align: left;">Year</th>
+                        <th style="padding: 10px; border: 1px solid var(--border-color); text-align: left;">Key Activities</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid var(--border-color);"><b>First Year</b></td>
+                        <td style="padding: 10px; border: 1px solid var(--border-color);">Comprehensive literature review, precise definition of the research framework, and initial report for doctoral symposia. Potential submission of a state-of-the-art review article.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid var(--border-color);"><b>Second Year</b></td>
+                        <td style="padding: 10px; border: 1px solid var(--border-color);">Presentation of a literature-based article, data collection (interviews, case analyses), and presentation of preliminary findings.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid var(--border-color);"><b>Third Year</b></td>
+                        <td style="padding: 10px; border: 1px solid var(--border-color);">Presentation of an empirical article, in-depth data analysis, finalization of results, and thesis writing and defense.</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section 3: Documents to Read -->
+        <!-- <section id="documents" class="content-section">
+            <div class="section-header">
+                <h2>Documents to Read</h2>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="section-content">
+                 <div class="bib-category">
+                    <h4>I. Foundational & General Works</h4>
+                    <div class="bib-item"><strong>Katterbauer, K., et al. (2024). Impact of Generative AI on FINTECH in Africa.</strong><p>Provides a comprehensive review of the current state of Fintech in Africa and the impact of generative AI on its growth.</p><div class="bib-actions"><a href="Impact of Generative AI on FINTECH in Africa-1719570244-en.pdf" target="_blank" class="btn btn-primary">Download PDF</a><button class="btn btn-secondary" data-modal-target="#modal-1">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Saúde, S., et al. (2024). Impacts of Generative Artificial Intelligence in Higher Education.</strong><p>An in-depth analysis of Gen AI's effects in higher education, combining a literature review with student perceptions.</p><div class="bib-actions"><a href="Impacts of Generative Artificial Intelligence in Higher Education-socsci-13-00410-v2_1_.pdf" target="_blank" class="btn btn-primary">Download PDF</a><button class="btn btn-secondary" data-modal-target="#modal-2">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>McKinsey. (2023). The economic potential of generative AI.</strong><p>Highlights the broad economic potential of generative AI across industries and functions.</p><div class="bib-actions"><a href="Leading-not-lagging-africas-gen-ai-opportunity.pdf" target="_blank" class="btn btn-primary">Download PDF</a><button class="btn btn-secondary" data-modal-target="#modal-3">Show Summary</button></div></div>
+                </div>
+
+                <div class="bib-category">
+                    <h4>II. AI & Digital Transformation in Africa</h4>
+                    <div class="bib-item"><strong>Chege, S. M. (2024). The Adoption of Generative AI in Kenya.</strong><p>A critical analysis of opportunities, challenges, and strategic imperatives, offering a valuable case study from an African context.</p><div class="bib-actions"><a href="The Adoption of Generative AI in Kenya A Critical Analysis of Opportunities, Challenges, and Strategic Imperatives.pdf" target="_blank" class="btn btn-primary">Download PDF</a><button class="btn btn-secondary" data-modal-target="#modal-4">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>African Development Bank (AfDB). (2020). Artificial intelligence in Africa: Challenges and opportunities.</strong><p>This report directly addresses the challenges and opportunities of AI across the African continent.</p><div class="bib-actions"><a href="Artificial Intelligence in-PB_23_24 (Azeroual) (EN).pdf" target="_blank" class="btn btn-primary">Download PDF</a><button class="btn btn-secondary" data-modal-target="#modal-5">Show Summary</button></div></div>
+                </div>
+
+                <div class="bib-category">
+                    <h4>III. AI & Digital Transformation in Morocco</h4>
+                    <div class="bib-item"><strong>Miraoui, A. (2023). Digitalisation au Maroc : État des lieux et perspectives.</strong><p>Discusses digitalization in Morocco, including the role of Gen AI in transforming innovation ecosystems.</p><div class="bib-actions"><a href="R5_Art+5_TERRAH_437-455.pdf" target="_blank" class="btn btn-primary">Download PDF</a><button class="btn btn-secondary" data-modal-target="#modal-6">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>CESE. (2021). Vers une transformation digitale responsable et inclusive.</strong><p>An official opinion from Morocco's Economic, Social and Environmental Council on responsible digital transformation.</p><div class="bib-actions"><a href="Avis CESE-Vers une transformation digitale- Transformation-digital.pdf" target="_blank" class="btn btn-primary">Download PDF</a><button class="btn btn-secondary" data-modal-target="#modal-7">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Atchani, S. (2024). Transformation digitale : comment l'IA envahit les directions financières.</strong><p>Discusses the impact of AI on financial departments within the Moroccan context.</p><div class="bib-actions"><a href="https://fnh.ma/article/actualite-financiere-maroc/transformation-digitale-entreprises-ia-interview" target="_blank" class="btn btn-primary">Visit Link</a><button class="btn btn-secondary" data-modal-target="#modal-8">Show Summary</button></div></div>
+                </div>
+
+                <div class="bib-category">
+                    <h4>IV. AI in Specific Sectors (Morocco & Africa)</h4>
+                    <div class="bib-item"><strong>EDUCATION: JENFI Yosra, & ZITOUNI Abdelkrim. (2024). Artificial Intelligence in the Service of Education in Morocco.</strong><p>A peer-reviewed article on AI's impact on Morocco's education sector, its opportunities, and challenges.</p><div class="bib-actions"><a href="N09A01-LIntelligence+Artificielle+au+Service+de+l'Éducation+au+Maroc+Opportunités,+Défis+et+Perspectives.pdf" target="_blank" class="btn btn-primary">Download PDF</a><button class="btn btn-secondary" data-modal-target="#modal-9">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>FINANCE: EL OUIDANI, R., & OUL-CAID, B. (2023). The adoption of AI in the Moroccan banking sector.</strong><p>Examines AI adoption in Moroccan banking, detailing economic advantages and legal issues.</p><div class="bib-actions"><a href="EL OUIDANI, R., & OUL-CAID, B. (2023). The adoption of AI in the Moroccan banking sector - sara,+41316-111570-1-CE.pdf" target="_blank" class="btn btn-primary">Download PDF</a><button class="btn btn-secondary" data-modal-target="#modal-10">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>HEALTHCARE: CEIMIA. (2024). State of AI in Healthcare in Sub-Saharan Africa.</strong><p>A comprehensive analysis of AI in healthcare across Sub-Saharan Africa, identifying applications and recommendations.</p><div class="bib-actions"><a href="State-of-ai-in-healthcare-sub-saharan-africa.pdf" target="_blank" class="btn btn-primary">Download PDF</a><button class="btn btn-secondary" data-modal-target="#modal-11">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>HEALTHCARE: Artificial Intelligence in Healthcare in Morocco - PM World Journal.</strong><p>Focuses on the applications and implications of AI within Morocco's healthcare sector.</p><div class="bib-actions"><a href="pmwj152-May2025-Omari-Harake-Artificial-Intelligence-in-Healthcare-in-Morocco.pdf" target="_blank" class="btn btn-primary">Download PDF</a><button class="btn btn-secondary" data-modal-target="#modal-12">Show Summary</button></div></div>
+                </div>
+            </div>
+        </section> -->
+        <!-- Section 3: Documents to Read -->
+        <section id="documents" class="content-section">
+            <div class="section-header">
+                <h2>Documents to Read</h2>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="section-content">
+                
+                <div class="bib-category">
+                    <h4>I. Foundational and General Works on Generative AI & Digital Transformation</h4>
+                    <div class="bib-item"><strong>Katterbauer, K., et al. (2024). Impact of Generative AI on FINTECH in Africa.</strong><p>This article provides a comprehensive review of the current state of Fintech in Africa and the impact of generative AI on its growth.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EaiqYDMwLGBPvM5BOON-inoBGxvPc2wqDcYokMesyuUytg?e=LExXnw" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-1">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Saúde, S., et al. (2024). Impacts of Generative Artificial Intelligence in Higher Education...</strong><p>This research provides an in-depth analysis of the effects of generative AI in higher education, combining a systematic literature review with student perceptions.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EVVpMZjD_lVIheUPSK5Q6ZIBIO2vr1ALPY-XiRu4l_bleg?e=yDrGiQ" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-2">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Chege, S. M. (2024). The Adoption of Generative AI in Kenya...</strong><p>This paper investigates the adoption of generative AI in Kenya, analyzing its advantages, barriers, and strategic needs, offering a valuable case study from an African context.</p><div class="bib-actions"><a href="The Adoption of Generative AI in Kenya A Critical Analysis of Opportunities, Challenges, and Strategic Imperatives.pdf" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-3">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>McKinsey. (2023). The economic potential of generative AI...</strong><p>This report highlights the broad economic potential of generative AI.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EZqCwG79kDZFi-HO_tTN2bgBmleebxLu4LiohMEPVrEJyw?e=SN5wmD" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-4">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Dwivedi, Y. K., et al. (2023). Artificial Intelligence (AI): Multidisciplinary perspectives...</strong><p>This comprehensive review addresses ethical aspects of AI, including fairness, transparency, and accountability, and calls for responsible AI deployment.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EfleoLEvkLlAmBfQg9i5GywBnT-bzehz7SDHH60VaVKxHA?e=OwmS07" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-5">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Brown, T., et al. (2020). Language models are few-shot learners.</strong><p>This foundational paper on large language models (LLMs) is relevant as generative AI tools like GPT-4 are based on such models.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EWvCgu0bOxNCkM8ZB5BNcZABCm46KILXJXyKp92w1HYg4Q?e=cim03o" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-6">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Russell, S., & Norvig, P. (2016). Artificial Intelligence: A Modern Approach (3rd ed.).</strong><p>This is a classic textbook providing a broad understanding of artificial intelligence.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EX2hyjCcftRDoTdlgSyJJX4BDFo0u5fvhSKBjoHUchruXg?e=9NElmS" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-7">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep Learning.</strong><p>This book offers a deep dive into deep learning, a core component of generative AI.</p><div class="bib-actions"><a href="https://www.deeplearningbook.org/" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-8">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Martineau, K. (2023). What Is Generative AI? IBM Research Blog.</strong><p>A good resource for understanding the definition and nature of generative AI.</p><div class="bib-actions"><a href="https://research.ibm.com/blog/what-is-generative-AI" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-9">Show Summary</button></div></div>
+                </div>
+
+                <div class="bib-category">
+                    <h4>II. AI & Digital Transformation in Africa (General)</h4>
+                    <div class="bib-item"><strong>African Development Bank (AfDB). (2020). Artificial intelligence in Africa: Challenges and opportunities.</strong><p>This report directly addresses the challenges and opportunities of AI across the African continent.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EVHH5sLMyGRAkohfAgOpHT4BH7ok6uzVDmoHymzwHghQSQ?e=gaiy5Q" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-10">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Olayinka, A., & Adepoju, S. (2021). AI in Africa: Harnessing opportunities, addressing challenges.</strong><p>This article specifically examines the opportunities and challenges of AI in Africa.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EVS2AiCPM0BLiXPWtEqDUk4BG1B1hS5r7vdMtQrByJArUg?e=hZFcBW" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-11">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Arakpogun, E. O., et al. (2021). Artificial Intelligence in Africa: Challenges and Opportunities.</strong><p>This provides insights into AI challenges and opportunities in the African context.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EVnT4NQS031Pi-PLaYQnYKABku4GwXKjt6Kj7jPB9t5wjw?e=92ebcS" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-12">Show Summary</button></div></div>
+                </div>
+
+                <div class="bib-category">
+                    <h4>III. Generative AI & Digital Transformation in Morocco</h4>
+                    <div class="bib-item"><strong>Miraoui, A. (2023). Digitalisation au Maroc : État des lieux et perspectives.</strong><p>This book specifically discusses digitalization in Morocco, including the role of generative AI in transforming innovation ecosystems.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EUm8OhUDWqdNurZm5UhsllABsrWNo8zQ6LXkM0yz-iNm1Q?e=Bs19XF" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-13">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Groupe de travail sur la transformation digitale. (2022). Stratégies pour une économie numérique au Maroc.</strong><p>This collective work presents strategies for integrating digital technologies into Morocco's economic development.</p><div class="bib-actions"><a href="https://www.cmconjoncture.com/conjoncture/actualites/digitalisation-au-maroc" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-43">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Atchani, S. (2024). Transformation digitale : comment l'IA envahit les directions financières. F.N.H.</strong><p>This article discusses the impact of AI on financial departments within the Moroccan context, highlighting its potential for efficiency and improved decision-making.</p><div class="bib-actions"><a href="https://fnh.ma/article/actualite-financiere-maroc/transformation-digitale-entreprises-ia-interview" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-14">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Morocco’s Digital Transformation: Harnessing AI in Education and Business (Published on sport.walaw.press).</strong><p>A web article covering the use of AI in Moroccan education and business sectors.</p><div class="bib-actions"><a href="https://sport.walaw.press/en/article/GLPFWLMMLQSS" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-44">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Artificial Intelligence in Healthcare in Morocco - PM World Journal.</strong><p>An article detailing the state of AI adoption in the Moroccan healthcare sector.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EROFyrGs79FAtHm_gSSuM6MBtqLFYvmCnQfbjVfFMiVFLQ?e=eeJ2Qj" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-15">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Morocco’s Financial Renaissance: Embracing Digital Innovation with Visionary Regulation | Journal of Economics and Business Issues.</strong><p>Examines digital innovation in Morocco's financial sector from a regulatory perspective.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/ETCqWDa8DWpLl8HvvwMJGpMBmwMOX1hsCrxO6ZFhSIi6UQ?e=RYnj44" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-16">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Vers une transformation digitale responsable et inclusive: Avis CESE</strong><p>An opinion from Morocco's Economic, Social and Environmental Council (CESE) on responsible digital transformation.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EZeaoWqKnNlFsJgjjEn_wXUBdCx4VYq63wstDac3UXDkJg?e=AQMS3a" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-17">Show Summary</button></div></div>
+                </div>
+
+                <div class="bib-category">
+                    <h4>IV. AI in Specific Sectors in Africa (Education, Finance, Health)</h4>
+                    <h5 style="margin-top: 20px; color: var(--secondary-color);">For Education:</h5>
+                    <div class="bib-item"><strong>Akakpo, M. G. (2023). Skilled for the Future: Information Literacy for AI Use by University Students in Africa...</strong><p>This article directly examines AI use by university students in Africa and the role of librarians.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/ERroxLqxgANHvoRIY_4EhWcBILIy7Q-F5rx212zptoNK-g?e=EA1m4Z" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-18">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Karunaratne, T., & Adesina, A. (2023). Is it the new Google: Impact of ChatGPT on Students’ Information Search Habits.</strong><p>This paper explores the impact of ChatGPT on students' information search habits, with a specific focus on South Africa.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/Ed2vptKiKYZMtjU8zCwxtTEBl-y_K-wb7CaLMNxdbWLuMg?e=loLIE5" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-19">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Lemke, C., et al. (2023). Exploring the Student Perspective: Assessing Technology Readiness and Acceptance...</strong><p>This study investigates student perspectives on adopting large language models in higher education in an African context.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EWuASyh8GE9JhHUJFubLWGwB5PBNuwIdJb6r5LB_AZiZJg?e=0NFAVG" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-20">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Bearman, M., & Ajjawi, R. (2023). Learning to work with the black box: Pedagogy for a world with artificial intelligence.</strong><p>This provides a pedagogical framework for AI integration in education.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EQhlvXR2CmNAohRoySK-dooBccO0jwM77pEGKpNlwqqHOw?e=mNIBp7" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-21">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Chan, C. K. Y. (2023). A comprehensive AI policy education framework for university teaching and learning.</strong><p>This discusses policy frameworks for AI in university education.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/ERJiCAzc4vZNgqvO6e1_CPIBoGtS3eCzrxHd3lX3dfGs7A?e=K5xleL" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-22">Show Summary</button></div></div>
+                    
+                    <h5 style="margin-top: 20px; color: var(--secondary-color);">For Finance/FinTech:</h5>
+                    <div class="bib-item"><strong>Shabsigh, G., & Boukherouaa, E. B. (2023). Generative Artificial Intelligence in Finance.</strong><p>This provides insights into generative AI specifically within the financial sector.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EfW6ulyWDlBPoPhLLtBxQRIBINP_vhdrc4rHYosgr5jnFA?e=6GBNeX" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-23">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Cao, L., Yang, Q., & Yu, P. S. (2021). Data science and AI in FinTech: An overview.</strong><p>This offers a general overview of AI and data science in FinTech.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EbyNf1p1Kv5ErJOV6Ws6xUEBhBKzT58Pl4dXF8smCeMEdw?e=63H9c4" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-24">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Chen, B., Wu, Z., & Zhao, R. (2023). From fiction to fact: the growing role of generative AI in business and finance.</strong><p>Relevant for understanding the role of generative AI in broader business and finance contexts.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EQgusleESOpGoQYwW0CUFAcBv0qHSwm5qYgqLjiE5XCNSg?e=WmUwsx" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-25">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Remolina, N. (2023). Generative AI in Finance: Risks and Potential Solutions.</strong><p>Important for understanding the risks associated with generative AI in finance.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EVjA9JARHORMsHdJjgoHSKUBPjdajr55TU43b62vshrwqA?e=wdSvaA" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-26">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Banna, H., et al. (2022). Fintech-based financial inclusion and risk-taking of microfinance institutions (MFIs)...</strong><p>This paper specifically focuses on FinTech and financial inclusion in Sub-Saharan Africa.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/Eer4rrQfX_JJhWtUJzWyt20Bew9MtmfgkOnIW64AUy2nYg?e=3EqQMB" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-27">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Hammerschlag, Z., Bick, G., & Luiz, J. M. (2020). The internationalization of African fintech firms...</strong><p>This article explores the expansion strategies of African FinTech firms.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EfbWM8n_YX9Bub-1MGZ57t0BRTuCWVCXyr9X3NJf4bUDOw?e=By168l" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-28">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Kieti, C. (2021). AI-driven innovations in Kenya’s fintech sector: A case study of chatbots.</strong><p>This provides a case study of AI innovation in an African FinTech sector.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EX3-CzF4nlFJnA0ma-NHNk8BdO_5ByTmKlLSD5_qNqRUeg" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-29">Show Summary</button></div></div>
+                    
+                    <h5 style="margin-top: 20px; color: var(--secondary-color);">For Healthcare:</h5>
+                    <div class="bib-item"><strong>International Centre of Expertise in Montreal on Artificial Intelligence (CEIMIA). (2024). State of AI in Healthcare in Sub-Saharan Africa.</strong><p>This report offers a comprehensive analysis of the current state of AI in healthcare across Sub-Saharan Africa.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EVnT4NQS031Pi-PLaYQnYKABku4GwXKjt6Kj7jPB9t5wjw" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-30">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Etori, N., Temesgen, E., & Gini, M. (2023). What We Know So Far: Artificial Intelligence in African Healthcare.</strong><p>A review of the state of AI in African healthcare.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/ESsU9-MnLdxJkD_2sJcZtBABWY5ok9trFCM6NVQRIMSQOw?e=V2cIs0" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-31">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Ibeneme, S., et al. (2021). Data Revolution, Health Status Transformation and the Role of Artificial Intelligence...</strong><p>This discusses the role of AI in health and pandemic preparedness in the African context.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/Ee82Et2vijNAglqG7RdjQwUBxK6DagXKu3T7EIWFncCv7Q?e=YEVaXj" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-32">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Kondo, T. S., et al. (2023). Exploring the Status of Artificial Intelligence for Healthcare Research in Africa...</strong><p>This bibliometric study focuses on AI for healthcare research in Africa.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EYf01J0QV8lNgTQmu_bonDUBimTcwJFEgo8IrRnzGU0pVA?e=VSswIx" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-33">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Kong, J. D., et al. (2022). Leveraging “Responsible, Explainable, and Local Artificial Intelligence Solutions...</strong><p>This work is relevant for understanding responsible AI solutions in public health for the Global South, including Africa.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EYcjnKOFT-ZHm9IyTiCYMpQB9mMqwLwh1g2_2BZAorFEaQ?e=tn6IUJ" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-34">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Owoyemi, A., et al. (2020a). Artificial Intelligence for Healthcare in Africa.</strong><p>A general overview of AI in healthcare in Africa.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EfRx8Pb49GBMrFzFYrPhcLcBbP7wDOugWgu-2R-SeE7XQQ?e=aDcZNw" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-35">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Mbunge, E. (2020). Integrating emerging technologies into healthcare: AI and IoT applications...</strong><p>This highlights the integration of emerging technologies like AI in African healthcare.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/ETSH9CBJKQ5NhefdrwSlG7wBHBxTlI5AcBDwXOf1KmLKCg?e=7PrHvQ" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-36">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Townsend, B. A., et al. (2023a). Mapping the Regulatory Landscape of AI in Healthcare in Africa.</strong><p>This provides insights into the regulatory environment for AI in healthcare in Africa.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EeDriRgBRrRPveMa1J9lEd4B8IczBIzdelo6Zs6-IE07Mg?e=BUhAP3" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-37">Show Summary</button></div></div>
+                </div>
+
+                <div class="bib-category">
+                    <h4>V. AI in Specific Sectors in Morocco (Education, Finance, Health)</h4>
+                    <h5 style="margin-top: 20px; color: var(--secondary-color);">For Education:</h5>
+                    <div class="bib-item"><strong>JENFI Yosra, & ZITOUNI Abdelkrim. (2024). Artificial Intelligence in the Service of Education in Morocco...</strong><p>This peer-reviewed article specifically focuses on the impact of AI on the education sector in Morocco over the past two decades.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EdDxZP1hbqhHqh2T7b6S8tQBnecv8X7L6fW8VAl2aRRJHQ?e=NhyLvH" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-38">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>"Case Study: Moroccan Startup Using AI for Education - Intelligence Artificielle Maroc"</strong><p>This case study features EdTech Innovate, a Moroccan startup founded in 2018, that is using AI to democratize access to learning resources.</p><div class="bib-actions"><a href="https://www.intelligenceartificiellemaroc.com/en/blog/case-study-moroccan-startup-using-ai-for-education/" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-39">Show Summary</button></div></div>
+                    
+                    <h5 style="margin-top: 20px; color: var(--secondary-color);">For Finance:</h5>
+                    <div class="bib-item"><strong>EL OUIDANI, R., & OUL-CAID, B. (2023). The adoption of AI in the Moroccan banking sector...</strong><p>This article specifically examines the adoption of AI in the Moroccan banking sector, detailing its economic advantages, opportunities, and accompanying legal challenges.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/ET2JDFIqdPxBqD6zmmWdjaoB8yULDh31zjgaHsvkfxb_ig?e=i4rlY1" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-40">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Atchani, S. (2024). Transformation digitale : comment l'IA envahit les directions financières. F.N.H.</strong><p>This article discusses the impact of AI on financial departments within the Moroccan context.</p><div class="bib-actions"><a href="https://fnh.ma/article/actualite-financiere-maroc/transformation-digitale-entreprises-ia-interview" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-14">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Artificial intelligence (AI) in Morocco: What areas and what prospects? - CESE.</strong><p>An opinion from Morocco's Committee on Knowledge and Information Society (CESE) that examines the potential and challenges of AI in Morocco.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EagnLkNAL11Ejnx3tM0-xYsBn-_kipmPwVgT7EQl4cqX8g?e=mrCx00" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-41">Show Summary</button></div></div>
+
+                    <h5 style="margin-top: 20px; color: var(--secondary-color);">For Healthcare:</h5>
+                    <div class="bib-item"><strong>Artificial Intelligence in Healthcare in Morocco - PM World Journal.</strong><p>An article detailing the state of AI adoption in the Moroccan healthcare sector.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EROFyrGs79FAtHm_gSSuM6MBtqLFYvmCnQfbjVfFMiVFLQ?e=eeJ2Qj" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-15">Show Summary</button></div></div>
+                    <div class="bib-item"><strong>Civil servants’ readiness for AI adoption: The role of change management in Morocco’s public sector.</strong><p>This academic article investigates the readiness of Moroccan civil servants for adopting AI, emphasizing the crucial role of change management.</p><div class="bib-actions"><a href="https://1drv.ms/b/c/7ebd2c7e3e54588c/EZsnHg7WtytLtxhDQNNK6wMBwjwgtIBgMc5uibqfhpv3kA?e=3G8258" target="_blank" class="btn btn-primary">Open Document</a><button class="btn btn-secondary" data-modal-target="#modal-bib-42">Show Summary</button></div></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section 4: Source Files & AI Tools -->
+        <section id="source-files" class="content-section">
+            <div class="section-header">
+                <h2>Source Files & AI Tools</h2>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="section-content">
+                <h3>Source Documents</h3>
+                <p>The content on this page was synthesized from the three primary documents provided for this project. You can access the original files below.</p>
+                <div class="card-grid">
+                    <div class="doc-card">
+                        <h4>Initial Research Proposal (EN)</h4>
+                        <p>The foundational English-language proposal outlining the research topic and methodology.</p>
+                        <!-- MAKE SURE this file is in the same folder as your index.html -->
+                        <a href="https://docs.google.com/document/d/1GEvv-IEvj3cP6gd8LSi5aMSFWE21unECESxa_cx4jkg/edit?usp=sharing" target="_blank" class="btn btn-primary">Open Document</a>
+                    </div>
+                    <div class="doc-card">
+                        <h4>Comprehensive Bibliography (CEDOC)</h4>
+                        <p>The detailed list of articles, publications, and research compiled for the literature review.</p>
+                         <!-- MAKE SURE this file is in the same folder as your index.html -->
+                        <a href="https://docs.google.com/document/d/1EIJ_u0aDdEHdV0mlZSaSKS8AqEb3T1rUMpKJoNjbUDc/edit?usp=sharing" target="_blank" class="btn btn-primary">Open Document</a>
+                    </div>
+                    <div class="doc-card">
+                        <h4>Projet de Thèse (FR)</h4>
+                        <p>The detailed French-language proposal containing specific frameworks and the research roadmap.</p>
+                         <!-- MAKE SURE this file is in the same folder as your index.html -->
+                        <a href="https://docs.google.com/document/d/112tqZdk8CIhqMPZTRAkuEpotj16NvRj7NerOsptf2K8/edit?usp=sharing" target="_blank" class="btn btn-primary">Open Document</a>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 40px;">AI Tools Used in Research</h3>
+                <p>This research proposal and literature review were compiled and augmented with the assistance of several generative AI tools to enhance productivity, synthesize information, and explore research avenues.</p>
+                <div class="card-grid">
+                    <div class="tool-card"><h4>Perplexity AI</h4><p>Used for conversational search and discovery of academic papers.</p></div>
+                    <div class="tool-card"><h4>OpenAI (ChatGPT)</h4><p>Utilized for structuring content, refining language, and summarizing topics.</p></div>
+                    <div class="tool-card"><h4>Google NotebookLM</h4><p>Leveraged for grounding analysis directly within source documents.</p></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Elmehdi Benhaddouch. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Modal Pop-ups -->
+    <!-- <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-container" id="modal-1"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This article provides a comprehensive review of the current state of Fintech in Africa and the impact of generative AI on its growth. It examines key drivers, opportunities for innovation, and challenges related to infrastructure, regulation, and skills.</p></div></div>
+        <div class="modal-container" id="modal-2"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This research provides an in-depth analysis of the effects of generative AI in higher education, combining a systematic literature review with a survey of student perceptions to understand both the pedagogical opportunities and the challenges.</p></div></div>
+        <div class="modal-container" id="modal-3"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This McKinsey report highlights the broad economic potential of generative AI, estimating its potential to add trillions of dollars in value to the global economy and identifying key use cases across industries like banking, retail, and life sciences.</p></div></div>
+        <div class="modal-container" id="modal-4"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This paper investigates the adoption of generative AI in Kenya, analyzing its advantages, barriers, and strategic needs. It serves as a valuable case study on the socio-economic factors influencing technology adoption in an African context.</p></div></div>
+        <div class="modal-container" id="modal-5"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This AfDB report addresses the broad challenges and opportunities of implementing AI across Africa. It covers various sectors and discusses policy recommendations for fostering an AI ecosystem that promotes sustainable and inclusive growth.</p></div></div>
+        <div class="modal-container" id="modal-6"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This work offers a specific discussion on the state of digitalization in Morocco. It analyzes progress, challenges, and future perspectives, focusing on how emerging technologies like Gen AI are transforming the nation's innovation ecosystems.</p></div></div>
+        <div class="modal-container" id="modal-7"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This official opinion from Morocco's Economic, Social and Environmental Council examines the need for a responsible and inclusive digital transformation, highlighting regulatory and ethical considerations for technologies like AI.</p></div></div>
+        <div class="modal-container" id="modal-8"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This article discusses the impact of AI on financial departments within the Moroccan context, highlighting its potential for efficiency, improved decision-making, and the automation of tasks like invoicing and expense categorization.</p></div></div>
+        <div class="modal-container" id="modal-9"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This peer-reviewed article specifically focuses on the impact of AI on the education sector in Morocco, examining the opportunities (e.g., personalized learning), challenges, and future perspectives for Moroccan education through AI.</p></div></div>
+        <div class="modal-container" id="modal-10"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This article examines the adoption of AI in the Moroccan banking sector, detailing its economic advantages, opportunities for efficiency and risk management, and the accompanying legal and regulatory challenges.</p></div></div>
+        <div class="modal-container" id="modal-11"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This report offers a comprehensive analysis of the current state of AI in healthcare across Sub-Saharan Africa, identifying key applications, hotspot countries for innovation, and providing recommendations for policy and practice.</p></div></div>
+        <div class="modal-container" id="modal-12"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This journal article examines the specific applications, potential benefits, and implementation challenges of AI within Morocco's healthcare system, covering areas like diagnostics, patient management, and public health.</p></div></div>
+    </div> -->
+
+    <!-- Modal Pop-ups for Bibliography -->
+    <div id="modal-overlay" class="modal-overlay">
+        <!-- Modals for Section I -->
+        <div class="modal-container" id="modal-bib-1"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This article provides a comprehensive review of the current state of Fintech in Africa and the impact of generative AI on its growth.</p></div></div>
+        <div class="modal-container" id="modal-bib-2"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This research provides an in-depth analysis of the effects of generative AI in higher education, combining a systematic literature review with student perceptions.</p></div></div>
+        <div class="modal-container" id="modal-bib-3"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This paper investigates the adoption of generative AI in Kenya, analyzing its advantages, barriers, and strategic needs, offering a valuable case study from an African context.</p></div></div>
+        <div class="modal-container" id="modal-bib-4"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This report highlights the broad economic potential of generative AI.</p></div></div>
+        <div class="modal-container" id="modal-bib-5"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This comprehensive review addresses ethical aspects of AI, including fairness, transparency, and accountability, and calls for responsible AI deployment.</p></div></div>
+        <div class="modal-container" id="modal-bib-6"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This foundational paper on large language models (LLMs) is relevant as generative AI tools like GPT-4 are based on such models.</p></div></div>
+        <div class="modal-container" id="modal-bib-7"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This is a classic textbook providing a broad understanding of artificial intelligence.</p></div></div>
+        <div class="modal-container" id="modal-bib-8"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This book offers a deep dive into deep learning, a core component of generative AI.</p></div></div>
+        <div class="modal-container" id="modal-bib-9"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>A good resource for understanding the definition and nature of generative AI.</p></div></div>
+        
+        <!-- Modals for Section II -->
+        <div class="modal-container" id="modal-bib-10"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This report directly addresses the challenges and opportunities of AI across the African continent.</p></div></div>
+        <div class="modal-container" id="modal-bib-11"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This article specifically examines the opportunities and challenges of AI in Africa.</p></div></div>
+        <div class="modal-container" id="modal-bib-12"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This provides insights into AI challenges and opportunities in the African context.</p></div></div>
+        
+        <!-- Modals for Section III -->
+                 <!-- Newly added modals -->
+        <div class="modal-container" id="modal-bib-43"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This collective work presents strategies for integrating digital technologies into Morocco's economic development.</p></div></div>
+        <div class="modal-container" id="modal-bib-44"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>A web article covering the use of AI in Moroccan education and business sectors.</p></div></div>
+        <div class="modal-container" id="modal-bib-13"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This book specifically discusses digitalization in Morocco, including the role of generative AI in transforming innovation ecosystems.</p></div></div>
+        <div class="modal-container" id="modal-bib-14"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This article discusses the impact of AI on financial departments within the Moroccan context, highlighting its potential for efficiency and improved decision-making.</p></div></div>
+        <div class="modal-container" id="modal-bib-15"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>An article detailing the state of AI adoption in the Moroccan healthcare sector.</p></div></div>
+        <div class="modal-container" id="modal-bib-16"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>Examines digital innovation in Morocco's financial sector from a regulatory perspective.</p></div></div>
+        <div class="modal-container" id="modal-bib-17"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>An opinion from Morocco's Economic, Social and Environmental Council (CESE) on responsible digital transformation.</p></div></div>
+        
+        <!-- Modals for Section IV -->
+        <div class="modal-container" id="modal-bib-18"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This article directly examines AI use by university students in Africa and the role of librarians.</p></div></div>
+        <div class="modal-container" id="modal-bib-19"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This paper explores the impact of ChatGPT on students' information search habits, with a specific focus on South Africa.</p></div></div>
+        <div class="modal-container" id="modal-bib-20"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This study investigates student perspectives on adopting large language models in higher education in an African context.</p></div></div>
+        <div class="modal-container" id="modal-bib-21"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This provides a pedagogical framework for AI integration in education.</p></div></div>
+        <div class="modal-container" id="modal-bib-22"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This discusses policy frameworks for AI in university education.</p></div></div>
+        <div class="modal-container" id="modal-bib-23"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This provides insights into generative AI specifically within the financial sector.</p></div></div>
+        <div class="modal-container" id="modal-bib-24"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This offers a general overview of AI and data science in FinTech.</p></div></div>
+        <div class="modal-container" id="modal-bib-25"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>Relevant for understanding the role of generative AI in broader business and finance contexts.</p></div></div>
+        <div class="modal-container" id="modal-bib-26"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>Important for understanding the risks associated with generative AI in finance.</p></div></div>
+        <div class="modal-container" id="modal-bib-27"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This paper specifically focuses on FinTech and financial inclusion in Sub-Saharan Africa.</p></div></div>
+        <div class="modal-container" id="modal-bib-28"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This article explores the expansion strategies of African FinTech firms.</p></div></div>
+        <div class="modal-container" id="modal-bib-29"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This provides a case study of AI innovation in an African FinTech sector.</p></div></div>
+        <div class="modal-container" id="modal-bib-30"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This report offers a comprehensive analysis of the current state of AI in healthcare across Sub-Saharan Africa, identifying applications, hotspot countries, and recommendations.</p></div></div>
+        <div class="modal-container" id="modal-bib-31"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>A review of the state of AI in African healthcare.</p></div></div>
+        <div class="modal-container" id="modal-bib-32"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This discusses the role of AI in health and pandemic preparedness in the African context.</p></div></div>
+        <div class="modal-container" id="modal-bib-33"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This bibliometric study focuses on AI for healthcare research in Africa.</p></div></div>
+        <div class="modal-container" id="modal-bib-34"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This work is relevant for understanding responsible AI solutions in public health for the Global South, including Africa.</p></div></div>
+        <div class="modal-container" id="modal-bib-35"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>A general overview of AI in healthcare in Africa.</p></div></div>
+        <div class="modal-container" id="modal-bib-36"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This highlights the integration of emerging technologies like AI in African healthcare.</p></div></div>
+        <div class="modal-container" id="modal-bib-37"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This provides insights into the regulatory environment for AI in healthcare in Africa.</p></div></div>
+
+        <!-- Modals for Section V -->
+        <div class="modal-container" id="modal-bib-38"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This peer-reviewed article specifically focuses on the impact of AI on the education sector in Morocco over the past two decades. It study examines opportunities, challenges, and perspectives for Moroccan education through AI.</p></div></div>
+        <div class="modal-container" id="modal-bib-39"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This case study features EdTech Innovate, a Moroccan startup founded in 2018, that is using AI to democratize access to learning resources and personalize education across the country.</p></div></div>
+        <div class="modal-container" id="modal-bib-40"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This article specifically examines the adoption of AI in the Moroccan banking sector, detailing its economic advantages, opportunities, and accompanying legal challenges.</p></div></div>
+        <div class="modal-container" id="modal-bib-41"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This source, an opinion from Morocco's Committee on Knowledge and Information Society (CESE), examines the potential and challenges of artificial intelligence (AI) in Morocco.</p></div></div>
+        <div class="modal-container" id="modal-bib-42"><div class="modal-content"><button class="modal-close">×</button><h3 class="modal-title">Summary</h3><p>This academic article investigates the readiness of Moroccan civil servants for adopting artificial intelligence (AI) within the public sector, emphasizing the crucial role of change management.</p></div></div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // --- Collapsible Sections Logic ---
+        document.querySelectorAll('.section-header').forEach(header => {
+            header.addEventListener('click', () => {
+                header.parentElement.classList.toggle('expanded');
+            });
+        });
+
+        // --- Active Nav Link on Scroll Logic ---
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').substring(1) === entry.target.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-30% 0px -70% 0px' });
+        sections.forEach(section => observer.observe(section));
+
+        // --- Modal Logic ---
+        const modalOverlay = document.getElementById('modal-overlay');
+        const modalContainers = document.querySelectorAll('.modal-container');
+        
+        document.querySelectorAll('[data-modal-target]').forEach(button => {
+            button.addEventListener('click', () => {
+                const targetModal = document.querySelector(button.dataset.modalTarget);
+                openModal(targetModal);
+            });
+        });
+
+        function openModal(modal) {
+            if (!modal) return;
+            modalContainers.forEach(mc => mc.style.display = 'none');
+            modal.style.display = 'block';
+            modalOverlay.classList.add('active');
+            
+            const closeButton = modal.querySelector('.modal-close');
+            const closeHandler = () => closeModal(modal);
+            closeButton.addEventListener('click', closeHandler, { once: true });
+            
+            modalOverlay.addEventListener('click', e => {
+                if (e.target === modalOverlay) {
+                    closeHandler();
+                }
+            }, { once: true });
+        }
+        
+        function closeModal(modal) {
+            if (!modal) return;
+            modalOverlay.classList.remove('active');
+            modal.style.display = 'none';
+        }
+    });
+    </script>
+</body>
+</html>
