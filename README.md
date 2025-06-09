@@ -24,25 +24,11 @@ This website was created to provide a clean, intuitive, and easily navigable pre
 
 ---
 
-## How to Run Locally
-
-No special tools are required. To view the website on your local machine:
-
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/your-github-username/your-repository-name.git
-    ```
-2.  **Navigate to the directory:**
-    ```bash
-    cd your-repository-name
-    ```
-3.  **Open the file:**
-    Open the `index.html` file in any modern web browser (like Chrome, Firefox, or Safari).
-
----
-
 ## Built With
 
 - **HTML5**
 - **CSS3** (with Flexbox and Grid for layout)
 - **Vanilla JavaScript** (for interactivity like modals and collapsible sections)
+- **Perplexity AI**
+- **NotbookLm**
+- **GoogleAI studio**
